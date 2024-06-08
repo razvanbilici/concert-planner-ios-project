@@ -8,10 +8,36 @@
 import SwiftUI
 
 struct LoginView: View {
+    
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack{
+            
+            // Split it into separate views for cleaner code
+            
+            // App Title
+            HeaderView(title: "Concert Planner", 
+                       banner_angle: 15,
+                       background: .green)
+            
+            // Login Section
+            LoginFormView()
+            
+            
+            // Create Account Section
+            VStack{
+                NavigationLink("Create Account",
+                destination: RegisterView())
+            }
+            .padding(.bottom, 50)
+            
+        }
+        
+        // Push sections to the top
+        Spacer()
+        }
     }
-}
+
 
 #Preview {
     LoginView()
