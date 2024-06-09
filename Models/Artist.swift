@@ -6,3 +6,11 @@
 //
 
 import Foundation
+
+// Codeable so we can convert to a dictionary in order to pass it to the firestore record insert method
+class Artist{
+    
+    // name = PK, no two artists can share the same name
+    @Published var name: String = ""
+    @Published var description: String = ""
+}

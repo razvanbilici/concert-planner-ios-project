@@ -3,17 +3,17 @@
 <plist version="1.0">
 <dict>
 	<key>API_KEY</key>
-	<string>AIzaSyAoS7q6zZcPOXHd4csRQowciENewMi5we4</string>
+	<string>AIzaSyAnf1F0hTrVUxt50XZ58gvUTESqthcsx2w</string>
 	<key>GCM_SENDER_ID</key>
-	<string>663048795588</string>
+	<string>422768443454</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>com.unibuc.project2024</string>
 	<key>PROJECT_ID</key>
-	<string>concert-planner-423c9</string>
+	<string>test-a2333</string>
 	<key>STORAGE_BUCKET</key>
-	<string>concert-planner-423c9.appspot.com</string>
+	<string>test-a2333.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -25,6 +25,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:663048795588:ios:28f6fb2800efc3556c6091</string>
+	<string>1:422768443454:ios:918dfd67c21f996713516f</string>
 </dict>
 </plist>

@@ -6,3 +6,10 @@
 //
 
 import Foundation
+
+class ConcertsViewModel: ObservableObject{
+    
+    @Published var new_concert_view = false
+    
+    init(){}
+}

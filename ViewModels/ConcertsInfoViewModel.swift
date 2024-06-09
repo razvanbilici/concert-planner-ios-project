@@ -6,3 +6,11 @@
 //
 
 import Foundation
+
+class ConcertsInfoViewModel: ObservableObject{
+    
+    
+
+    
+    init(){}
+}
