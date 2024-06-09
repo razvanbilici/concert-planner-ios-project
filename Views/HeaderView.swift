@@ -25,6 +25,7 @@ struct HeaderView: View {
                     .foregroundColor(.white)
                     .bold()
                     .font(.system(size: 50))
+                    .padding(.top, 60)
             }
         }
         
@@ -33,7 +34,7 @@ struct HeaderView: View {
         // Negative offset so that it moves to the top
         .frame(width: UIScreen.main.bounds.width * 2,
                 height:300)
-            .offset(y: -120)
+            .offset(y: -140)
     }
 }
 

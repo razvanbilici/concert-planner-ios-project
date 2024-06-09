@@ -6,3 +6,11 @@
 //
 
 import Foundation
+
+// Codeable so we can convert to a dictionary in order to pass it to the firestore record insert method
+struct User: Codable{
+    
+    let id: String
+    let username: String
+    let email: String
+}

@@ -2,7 +2,7 @@
 //  LoginFormView.swift
 //  project2024
 //
-//  Created by user264991 on 6/8/24.
+
 //
 
 import SwiftUI
@@ -10,21 +10,21 @@ import SwiftUI
 struct LoginFormView: View {
     
     
-    @State var email_input = ""
-    @State var pass_input = ""
+    @StateObject var viewModel = LoginFormViewModel()
     
     var body: some View {
         Form {
             
             // Hide the password with a SecureField
-            TextField("Email", text: $email_input).autocapitalization(/*@START_MENU_TOKEN@*/.none/*@END_MENU_TOKEN@*/)
-            SecureField("Password", text: $pass_input)
+            TextField("Email", 
+                      text: $viewModel.email_input).autocapitalization(/*@START_MENU_TOKEN@*/.none/*@END_MENU_TOKEN@*/)
+            
+            SecureField("Password", text: $viewModel.pass_input)
+            
             AbstractButton(title: "Login",
                            background: .cyan) {
-                // None
+                viewModel.login()
             }
-           
-            
 //            Button{
 //                
 //            } label: {

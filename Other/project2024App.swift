@@ -7,11 +7,12 @@
 
 import SwiftUI
 import FirebaseCore
+import Firebase
 
 // App entry point
 
 @main
-struct project2024App: App {
+ struct project2024App: App {
     
     // Use info from the GoogleService Firebase config file
     init(){

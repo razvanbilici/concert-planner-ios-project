@@ -7,14 +7,31 @@
 
 import SwiftUI
 
+
+
 struct MainView: View {
-    var body: some View {
-        NavigationView {
-            LoginView()
-        }
     
+    @StateObject var viewModel = MainViewModel()
+    
+    var body: some View {
+    
+            // If user is not signed in, display the login screen
+            
+            if viewModel.is_signed_in, !viewModel.current_user_id.isEmpty {
+                
+                Text(viewModel.current_user_id)
+                // User is signed in
+                ConcertsView()
+//                LoginView()
+                
+            }
+            else {
+                LoginView()
+            }
+            
+        }
     }
-}
+
 
 #Preview {
     MainView()
