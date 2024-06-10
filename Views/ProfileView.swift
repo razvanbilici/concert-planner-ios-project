@@ -15,9 +15,21 @@ struct ProfileView: View {
         
             NavigationView{
                 VStack{
-                    if let user = viewModel.user {
+                    
+                    if let user = viewModel.user{
                         
+                        let vi = viewModel
+                        
+                        Image(systemName: "person")
+                        
+                        Text("Username")
                         Text(user.username)
+                        
+                        Text("Email")
+                        Text(user.email)
+                        
+                        Text("Total Number Of Concerts")
+                        Text("\(viewModel.number_of_concerts)")
                         
                     }
                 }

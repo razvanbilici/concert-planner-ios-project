@@ -14,6 +14,7 @@ class ConcertsViewModel: ObservableObject{
     
     @Published var new_concert_view = false
     @Published var concerts: [Concert] = []
+//    @Published var number_of_concerts: Int = 0
     
     func get_concerts(){
         
@@ -36,6 +37,10 @@ class ConcertsViewModel: ObservableObject{
                     } else {
                         // Check if there are documents in the query snapshot
                         if let documents = querySnapshot?.documents {
+                            
+                            
+//                            self.number_of_concerts = documents.count
+                            
                             for document in documents {
                                 // Access the data in each concert document
                                 let data = document.data()
@@ -50,12 +55,14 @@ class ConcertsViewModel: ObservableObject{
                                                       attended: data["attended"] as? Bool ?? false)
                                 print("yepp", concert.artist)
                                 self.concerts.append(concert)
+//                                print("totallll", documents.count)
                                 }
                                 
                             }
                         }
                     }
                 }
+    
     
     func remove(id: String){
         
@@ -72,6 +79,25 @@ class ConcertsViewModel: ObservableObject{
             .collection("concerts")
             .document(id)
             .delete()
+        
+    }
+    
+    func toggle_attended(concert: Concert){
+        
+        guard let userId = Auth.auth().currentUser?.uid else{
+            return
+        }
+        
+        var _concert = concert
+        _concert.set_attended(!concert.attended)
+        
+        let db = Firestore.firestore()
+        
+        db.collection("users")
+            .document(userId)
+            .collection("concerts")
+            .document(_concert.id)
+            .setData(_concert.to_json())
         
     }
     

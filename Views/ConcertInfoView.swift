@@ -42,12 +42,13 @@ struct ConcertInfoView: View {
             
             Spacer()
             
-            Button{
-              
-            }
-        label: {
-            Image(systemName: concert.attended ? "checkmark.circle.fill" : "circle")
-        }
+//            Button{
+//                viewModel.toggle_attended(concert: concert)
+//                viewModel.get_concerts()
+//            }
+//        label: {
+//            Image(systemName: concert.attended ? "checkmark.circle.fill" : "circle")
+//        }
             
         }
     }

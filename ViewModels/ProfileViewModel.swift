@@ -12,6 +12,7 @@ import FirebaseFirestore
 class ProfileViewModel: ObservableObject{
     
     @Published var user: User? = nil
+    @Published var number_of_concerts: Int = 0
     
     func logout(){
         
@@ -32,7 +33,7 @@ class ProfileViewModel: ObservableObject{
             
             DispatchQueue.main.async{
                 
-//                print("dataaaaaaaaa", data["id"] as? String ?? "mila")
+                //                print("dataaaaaaaaa", data["id"] as? String ?? "mila")
                 
                 self?.user = User(
                     id: data["id"] as? String ?? "",
@@ -43,7 +44,29 @@ class ProfileViewModel: ObservableObject{
             
         }
         
-    }
+        let concertsRef = db.collection("users").document(user_id).collection("concerts")
+        
+        // Execute the query to get all concert documents for the user
+        concertsRef.getDocuments { (querySnapshot, error) in
+            if let error = error {
+                print("Error getting concert documents: \(error)")
+            } else {
+                // Check if there are documents in the query snapshot
+                if let documents = querySnapshot?.documents {
+                    
+                                                
+                    for document in documents {
+                                                    
+                            let data = document.data()
+
+                            print("totallll", documents.count)
+                        self.number_of_concerts = documents.count
+                                    }
+                                                    
+                }
+                
+            }
+        }}
     
 
     

@@ -32,15 +32,21 @@ struct ConcertsView: View {
                     //                    Text(concert.artist)
                                ConcertInfoView(concert: concert)
                                 .swipeActions{
-                                    Button{
+                                    Button("Remove Concert"){
                                         
                                         viewModel.remove(id: concert.id)
                                         viewModel.get_concerts()
                                         
-                                    } label: {
-                                        Text("Remove Event").tint(.red)
-                                    }
+                                    }.tint(.red)
                                 }
+                            
+                            Button{
+                                viewModel.toggle_attended(concert: concert)
+                                viewModel.get_concerts()
+                            }
+                        label: {
+                            Image(systemName: concert.attended ? "checkmark.circle.fill" : "circle")
+                        }
                                         }
                     
                     
