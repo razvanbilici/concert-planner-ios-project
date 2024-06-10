@@ -59,6 +59,10 @@ struct ConcertsView: View {
                 }
                 .sheet(isPresented: $viewModel.new_concert_view){
                     AddConcertView(new_concert: $viewModel.new_concert_view)
+                        .onDisappear{
+                            viewModel.get_concerts()
+                        }
+                    
                 }
             }.onAppear{
                 viewModel.get_concerts()
