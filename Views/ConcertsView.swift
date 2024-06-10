@@ -26,11 +26,13 @@ struct ConcertsView: View {
         //        Text("Test")
         
             NavigationView{
-                VStack{
+                VStack(alignment: .center){
+                    
+                    HStack{
                         List(viewModel.concerts) {
-                                concert in
-                    //                    Text(concert.artist)
-                               ConcertInfoView(concert: concert)
+                            concert in
+                            //                    Text(concert.artist)
+                            ConcertInfoView(concert: concert)
                                 .swipeActions{
                                     Button("Remove Concert"){
                                         
@@ -47,7 +49,7 @@ struct ConcertsView: View {
                         label: {
                             Image(systemName: concert.attended ? "checkmark.circle.fill" : "circle")
                         }
-                                        }
+                        }}
                     
                     
                         .listStyle(PlainListStyle())

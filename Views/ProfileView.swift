@@ -14,25 +14,47 @@ struct ProfileView: View {
     var body: some View {
         
             NavigationView{
+
                 VStack{
                     
                     if let user = viewModel.user{
                         
-                        let vi = viewModel
+                        Image(systemName: "person.circle")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .foregroundColor(.blue)
+                            .frame(width: 125, height: 125)
+                            .padding()
                         
-                        Image(systemName: "person")
-                        
-                        Text("Username")
-                        Text(user.username)
-                        
-                        Text("Email")
-                        Text(user.email)
-                        
-                        Text("Total Number Of Concerts")
-                        Text("\(viewModel.number_of_concerts)")
-                        
+                        VStack(alignment: .leading){
+                            
+                            HStack{
+                                Text("Username").bold()
+                                Text(user.username)
+                            }.padding()
+                            
+                            
+                            HStack{
+                                Text("Email").bold()
+                                Text(user.email)
+                            }.padding()
+                            
+                            
+                            HStack
+                            {
+                                Text("Total Number Of Concerts:").bold()
+                                Text("\(viewModel.number_of_concerts)")
+                            }.padding()
+                            
+                        }
+                            
+                            Button("Logout"){
+                                viewModel.logout()
+                            }.tint(.red).padding()
+                            
+                            Spacer()
+                        }
                     }
-                }
                 .navigationTitle("Profile")
             }
             .onAppear{

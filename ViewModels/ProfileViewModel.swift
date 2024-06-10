@@ -9,12 +9,20 @@ import Foundation
 import FirebaseAuth
 import FirebaseFirestore
 
+
 class ProfileViewModel: ObservableObject{
     
     @Published var user: User? = nil
     @Published var number_of_concerts: Int = 0
     
     func logout(){
+        
+        do{
+            try Auth.auth().signOut()
+        } catch{
+            print("OOPS")
+//            Alert(title: "something went wrong")
+        }
         
     }
     
@@ -55,9 +63,7 @@ class ProfileViewModel: ObservableObject{
                 if let documents = querySnapshot?.documents {
                     
                                                 
-                    for document in documents {
-                                                    
-                            let data = document.data()
+                    for _ in documents {
 
                             print("totallll", documents.count)
                         self.number_of_concerts = documents.count
