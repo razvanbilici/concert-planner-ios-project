@@ -13,7 +13,7 @@ import FirebaseDatabase
 struct ConcertsView: View {
     
     @StateObject var viewModel = ConcertsViewModel()
-    
+
     
     // Fetching data
     //        self._items = FirestoreQuery(collectionPath: "users/\(user_id)/concerts")
@@ -25,13 +25,22 @@ struct ConcertsView: View {
     var body: some View {
         //        Text("Test")
         
-        NavigationView{
             NavigationView{
                 VStack{
-                                        List(viewModel.concerts) {
-                                            concert in
-                    //                        Text(concert.artist)
-                                            Text(concert.artist)
+                        List(viewModel.concerts) {
+                                concert in
+                    //                    Text(concert.artist)
+                               ConcertInfoView(concert: concert)
+                                .swipeActions{
+                                    Button{
+                                        
+                                        viewModel.remove(id: concert.id)
+                                        viewModel.get_concerts()
+                                        
+                                    } label: {
+                                        Text("Remove Event").tint(.red)
+                                    }
+                                }
                                         }
                     
                     
@@ -52,9 +61,9 @@ struct ConcertsView: View {
                     AddConcertView(new_concert: $viewModel.new_concert_view)
                 }
             }.onAppear{
-                viewModel.get_concert()
+                viewModel.get_concerts()
             }
-        }
+        
     }}
 
 
