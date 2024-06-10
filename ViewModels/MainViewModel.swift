@@ -1,27 +1,22 @@
-//
-//  MainViewModel.swift
-//  project2024
-//
-//  Created by user264991 on 6/8/24.
-//
 
-import Foundation
-import FirebaseAuth
+
+import SwiftUI
+import Firebase
 
 class MainViewModel: ObservableObject{
     
-    @Published var current_user_id: String = ""
-    private var listener:  AuthStateDidChangeListenerHandle? = nil
+    @Published var current_user_id: String = "default"
+    private var handler: AuthStateDidChangeListenerHandle?
     
-    // Check via firebase when the current user has changed
-    init(){
-        
-        self.listener = Auth.auth().addStateDidChangeListener{[weak self] _, userr in
+    init() {
+        self.handler = Auth.auth().addStateDidChangeListener { [weak self] _,user in
             
             DispatchQueue.main.async {
-                self?.current_user_id = userr?.uid ?? ""
+                self?.current_user_id = user?.uid ?? ""
+                
             }
         }
+//        print(currentUserId)
     }
     
     public var is_signed_in: Bool {

@@ -18,14 +18,25 @@ struct MainView: View {
             // If user is not signed in, display the login screen
             
             if viewModel.is_signed_in, !viewModel.current_user_id.isEmpty {
-                
-                Text(viewModel.current_user_id)
                 // User is signed in
-                ConcertsView()
+//                Text(viewModel.current_user_id)
+                
+                TabView{
+                    ConcertsView()
+                        .tabItem {
+                            Label("My Concerts", systemImage: "music.note")
+                        }
+                    ProfileView()
+                        .tabItem {
+                            Label("Profile", systemImage: "person.circle")
+                        }
+                
+                }
 //                LoginView()
                 
             }
             else {
+                
                 LoginView()
             }
             

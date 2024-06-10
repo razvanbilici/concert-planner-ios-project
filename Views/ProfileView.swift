@@ -8,9 +8,26 @@
 import SwiftUI
 
 struct ProfileView: View {
+    
+    @StateObject var viewModel = ProfileViewModel()
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
+        
+            NavigationView{
+                VStack{
+                    if let user = viewModel.user {
+                        
+                        Text(user.username)
+                        
+                    }
+                }
+                .navigationTitle("Profile")
+            }
+            .onAppear{
+                viewModel.get_user()
+            }
+        }
+    
 }
 
 #Preview {
