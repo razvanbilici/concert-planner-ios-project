@@ -15,6 +15,9 @@ struct AddConcertView: View {
     @StateObject var viewModel = AddConcertViewModel()
     @Binding var new_concert: Bool
     
+    private let artists = ["Metallica", "Megadeth", "Ion Dolanescu", "Fuego"]
+    @State private var selected_artist: String?
+    
     var body: some View {
         VStack{
             Text("Add Concert")
@@ -24,8 +27,13 @@ struct AddConcertView: View {
             
             Form{
                 // Artist
+//                TextField("Artist", text: $viewModel.artist).padding(.bottom)
 //                ArtistDropDown(options: ["heyp", "test"])
-                TextField("Artist", text: $viewModel.artist).padding(.bottom)
+                DropDownView(title: "Artist", 
+                             prompt: "Select an Artist",
+                             options: artists,
+                             selection: $selected_artist)
+                
                 
                 // Date
                 DatePicker("Date", selection: $viewModel.date).datePickerStyle(GraphicalDatePickerStyle())
@@ -39,6 +47,8 @@ struct AddConcertView: View {
                 AbstractButton(title: "Add Concert", background: .cyan){
 //                    viewModel.save()
 //                    new_concert = false
+                    
+                    viewModel.artist = "" + selected_artist!
                     
                     if viewModel.valid {
                         
